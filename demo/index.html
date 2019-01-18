@@ -37,10 +37,13 @@ Copyright (c) 2017 Neo
       }
 
       .discounts-container{
-        height: 100px;
+        height: 300px;
         width: 400px;
         background-color: #EF9A9A;
       }
+
+      
+
 
     </style>
 
@@ -54,6 +57,8 @@ Copyright (c) 2017 Neo
 
     <div class="discounts-container">
       <nc-discounts-grid
+          amount-to-apply-discount="50"
+          discount-increase-percent="5"
           discounts-grid-data='{{discountsList.data}}'
           height-discounts-grid-items="70"
           width-discounts-grid-items="70"

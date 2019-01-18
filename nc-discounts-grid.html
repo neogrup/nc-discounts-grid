@@ -1,6 +1,8 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../nc-items-grid/nc-items-grid.html">
 
+<link rel="import" href="../nc-discount-dialog/nc-discount-dialog.html">
+
 <dom-module id="nc-discounts-grid">
   <template>
     <style>
@@ -22,6 +24,11 @@
         on-item-selected="_discountSelected">
     </nc-items-grid>
 
+    <nc-discount-dialog
+        id="discountDialog"
+        language="{{language}}"
+        on-discount-accepted="_discountAccepted">
+    </nc-discount-dialog>
 
   </template>
 
@@ -30,16 +37,14 @@
       static get is() { return 'nc-discounts-grid'; }
       static get properties() {
         return {
+          amountToApplyDiscount: Number,
+          discountIncreasePercent: Number,
           discountsGridData: {
             type: Array,
             value: []
           },
           language: String,
           breadcrumb: {
-            type: Boolean,
-            value: false
-          },
-          itemsGridLoading: {
             type: Boolean,
             value: false
           },
@@ -66,8 +71,27 @@
         super.connectedCallback();
       }
 
-      _discountSelected(item){
-        this.dispatchEvent(new CustomEvent('discount-selected', {detail: item.detail, bubbles: true, composed: true }));
+      _discountSelected(discount){
+        if ((discount.detail.minValue) && (discount.detail.maxValue)){
+          console.log('variable')
+          this._openDiscountDialog(discount.detail);
+
+        } else{
+          console.log('fijo')
+        }
+        // this.dispatchEvent(new CustomEvent('discount-selected', {detail: item.detail, bubbles: true, composed: true }));
+      }
+
+      _discountAccepted(e){
+        console.log('_discountAccepted', e)
+        // this.dispatchEvent(new CustomEvent('discount-selected', {detail: item.detail, bubbles: true, composed: true }));
+      }
+
+      _openDiscountDialog(discount){
+        this.$.discountDialog.set('discountData', discount);
+        this.$.discountDialog.set('discountIncreasePercent', this.discountIncreasePercent);
+        this.$.discountDialog.set('amountToApplyDiscount', this.amountToApplyDiscount);
+        this.$.discountDialog.open();
       }
     }
 
