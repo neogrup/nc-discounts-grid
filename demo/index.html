@@ -1,0 +1,83 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2017 Neo
+-->
+<html lang="es">
+<head>
+  <title>nc-discounts-grid demo</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../polymer/polymer-element.html">
+  <link rel="import" href="../../iron-ajax/iron-ajax.html">
+
+  <link rel="import" href="../nc-discounts-grid.html">
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+      font-family: 'Roboto', 'Noto', sans-serif;
+    }
+  </style>
+</head>
+<body unresolved>
+<dom-module id="nc-discounts-grid-demo">
+  <template>
+    <style>
+     :host {
+        display: block;
+      }
+
+      div{
+        margin-bottom: 20px;
+      }
+
+      .discounts-container{
+        height: 100px;
+        width: 400px;
+        background-color: #EF9A9A;
+      }
+
+    </style>
+
+    <iron-ajax id="getDiscountsList"
+        auto
+        url="data/discounts"
+        method="get"
+        handle-as="json"
+        last-response="{{discountsList}}">
+    </iron-ajax>
+
+    <div class="discounts-container">
+      <nc-discounts-grid
+          discounts-grid-data='{{discountsList.data}}'
+          height-discounts-grid-items="70"
+          width-discounts-grid-items="70"
+          margin-discounts-grid-items="10"
+          language="es"
+          on-discount-selected="_discountSelected">
+      </nc-discounts-grid>
+    </div>
+
+
+  </template>
+  <script>
+    class NcDiscountsGridDemo extends Polymer.Element {
+      static get is() {
+        return 'nc-discounts-grid-demo';
+      }
+
+      _discountSelected(item){
+        console.log(item);
+      }
+    }
+    window.customElements.define(NcDiscountsGridDemo.is, NcDiscountsGridDemo);
+  </script>
+</dom-module>
+<nc-discounts-grid-demo></nc-discounts-grid-demo>
+</body>
+</html>

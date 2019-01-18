@@ -1,0 +1,76 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../nc-items-grid/nc-items-grid.html">
+
+<dom-module id="nc-discounts-grid">
+  <template>
+    <style>
+    </style>
+
+
+    <nc-items-grid
+        id="itemsGrid"
+        items-grid-data="{{discountsGridData}}"
+        loading="{{itemsGridLoading}}"
+        language="{{language}}"
+        is-paginated
+        breadcrumb="[[breadcrumb]]"
+        auto-flow
+        item-height="[[heightDiscountsGridItems]]"
+        item-width="[[widthDiscountsGridItems]]"
+        item-margin="[[marginDiscountsGridItems]]"
+        item-view-mode="[[viewModeDiscountsGridItems]]"
+        on-item-selected="_discountSelected">
+    </nc-items-grid>
+
+
+  </template>
+
+  <script>
+    class NcDiscountsGrid extends Polymer.Element {
+      static get is() { return 'nc-discounts-grid'; }
+      static get properties() {
+        return {
+          discountsGridData: {
+            type: Array,
+            value: []
+          },
+          language: String,
+          breadcrumb: {
+            type: Boolean,
+            value: false
+          },
+          itemsGridLoading: {
+            type: Boolean,
+            value: false
+          },
+          heightDiscountsGridItems: {
+            type: Number,
+            reflectToAttribute: true
+          },
+          widthDiscountsGridItems: {
+            type: Number,
+            reflectToAttribute: true
+          },
+          marginDiscountsGridItems: {
+            type: Number,
+            reflectToAttribute: true
+          },
+          viewModeDiscountsGridItems: {
+            type: String,
+            reflectToAttribute: true
+          }
+        };
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+      }
+
+      _discountSelected(item){
+        this.dispatchEvent(new CustomEvent('discount-selected', {detail: item.detail, bubbles: true, composed: true }));
+      }
+    }
+
+    window.customElements.define(NcDiscountsGrid.is, NcDiscountsGrid);
+  </script>
+</dom-module>

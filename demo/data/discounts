@@ -1,0 +1,55 @@
+{
+  "apiVersion": "1",
+  "systemTime": "2019-01-18T11:00:42.22174+01:00",
+  "data": [
+    {
+      "code": "DL25",
+      "kind": "line",
+      "name": "25% dto.línea",
+      "percentage": 25,
+      "urlImage": "imgdisct/R002/../../../Users/Edgar/Pictures/dto.jpg"
+    },
+    {
+      "code": "DL10",
+      "kind": "line",
+      "maxValue": 50,
+      "minDocAmount": 1.5,
+      "minValue": 0,
+      "name": "10% dto.línea",
+      "percentage": 10,
+      "urlImage": "imgdisct/R002/Descuentos/L10.png"
+    },
+    {
+      "code": "DTVA",
+      "kind": "line",
+      "maxValue": 100,
+      "minValue": 5,
+      "name": "Dto. de línea",
+      "percentage": 20,
+      "urlImage": "imgdisct/R002/Descuentos/LVA.png"
+    },
+    {
+      "code": "DTVP",
+      "kind": "doc",
+      "maxValue": 100,
+      "minValue": 5,
+      "name": "Dto. de pie",
+      "percentage": 20,
+      "urlImage": "imgdisct/R002/Descuentos/TVA.png"
+    },
+    {
+      "code": "DP00",
+      "kind": "doc",
+      "name": "100% dto.",
+      "percentage": 100
+    },
+    {
+      "code": "DP5",
+      "kind": "doc",
+      "name": "5% dto.",
+      "percentage": 5,
+      "urlImage": "imgdisct/R002/Descuentos/T5.png"
+    }
+  ],
+  "error": null
+}

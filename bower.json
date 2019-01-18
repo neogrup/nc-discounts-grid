@@ -1,0 +1,33 @@
+{
+  "name": "nc-discounts-grid",
+  "version": "1.0.0",
+  "description": "Polymer component to display discounts grid",
+  "authors": [
+    "edgar.piera@neogrup.com"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "nc"
+  ],
+  "main": "nc-discounts-grid.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NEOGRUP/nc-discounts-grid"
+  },
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "nc-items-grid": "NEOGRUP/nc-items-grid#^1.0.15"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}
