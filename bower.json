@@ -1,6 +1,6 @@
 {
   "name": "nc-discounts-grid",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Polymer component to display discounts grid",
   "authors": [
     "edgar.piera@neogrup.com"
@@ -21,7 +21,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "nc-items-grid": "NEOGRUP/nc-items-grid#^1.0.15",
-    "nc-discount-dialog": "NEOGRUP/nc-discount-dialog#^1.0.0"
+    "nc-discount-dialog": "NEOGRUP/nc-discount-dialog#^1.0.2"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

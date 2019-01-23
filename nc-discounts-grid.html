@@ -37,7 +37,8 @@
       static get is() { return 'nc-discounts-grid'; }
       static get properties() {
         return {
-          amountToApplyDiscount: Number,
+          ticketTotalAmount: Number,
+          lineTotalAmount: Number,
           discountIncreasePercent: Number,
           discountsGridData: {
             type: Array,
@@ -73,26 +74,49 @@
 
       _discountSelected(discount){
         if ((discount.detail.minValue) && (discount.detail.maxValue)){
-          console.log('variable')
-          this._openDiscountDialog(discount.detail);
-
+          if (discount.detail.kind === "doc"){
+            this.openDiscountDialog(discount.detail);
+          } else {
+            this.dispatchEvent(new CustomEvent('line-variable-discount-selected-previous', {detail: discount.detail, bubbles: true, composed: true }));
+          }
         } else{
-          console.log('fijo')
+          switch (discount.detail.kind) {
+            case 'doc':
+              this.dispatchEvent(new CustomEvent('doc-fix-discount-selected', {detail: {discountData: discount.detail}, bubbles: true, composed: true }));  
+              break;
+            case 'line':
+              this.dispatchEvent(new CustomEvent('line-fix-discount-selected', {detail: {discountData: discount.detail}, bubbles: true, composed: true }));  
+              break;
+            case 'doc.del':
+              this.dispatchEvent(new CustomEvent('doc-del-discount-selected', {detail: {discountData: discount.detail}, bubbles: true, composed: true }));  
+              break;
+            case 'lin.del':
+              this.dispatchEvent(new CustomEvent('line-del-discount-selected', {detail: {discountData: discount.detail}, bubbles: true, composed: true }));  
+              break;
+          }
         }
-        // this.dispatchEvent(new CustomEvent('discount-selected', {detail: item.detail, bubbles: true, composed: true }));
       }
 
-      _discountAccepted(e){
-        console.log('_discountAccepted', e)
-        // this.dispatchEvent(new CustomEvent('discount-selected', {detail: item.detail, bubbles: true, composed: true }));
-      }
-
-      _openDiscountDialog(discount){
+      openDiscountDialog(discount){
         this.$.discountDialog.set('discountData', discount);
         this.$.discountDialog.set('discountIncreasePercent', this.discountIncreasePercent);
-        this.$.discountDialog.set('amountToApplyDiscount', this.amountToApplyDiscount);
+        if (discount.kind === 'doc'){
+          this.$.discountDialog.set('amountToApplyDiscount', this.ticketTotalAmount);
+        } else{
+          this.$.discountDialog.set('amountToApplyDiscount', this.lineTotalAmount);
+        }
         this.$.discountDialog.open();
       }
+
+      _discountAccepted(discount){
+        if (discount.detail.discountData.kind === "doc"){
+          this.dispatchEvent(new CustomEvent('doc-variable-discount-selected', {detail: discount.detail, bubbles: true, composed: true }));
+        } else{
+          this.dispatchEvent(new CustomEvent('line-variable-discount-selected', {detail: discount.detail, bubbles: true, composed: true }));
+        }
+      }
+
+
     }
 
     window.customElements.define(NcDiscountsGrid.is, NcDiscountsGrid);

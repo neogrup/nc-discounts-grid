@@ -57,14 +57,22 @@ Copyright (c) 2017 Neo
 
     <div class="discounts-container">
       <nc-discounts-grid
-          amount-to-apply-discount="50"
+          id="gridDiscounts"
+          ticket-total-amount="25.546"
+          line-total-amount="2.5"
           discount-increase-percent="5"
-          discounts-grid-data='{{discountsList.data}}'
+          discounts-grid-data="[[discountsList.data]]"
           height-discounts-grid-items="70"
           width-discounts-grid-items="70"
           margin-discounts-grid-items="10"
           language="es"
-          on-discount-selected="_discountSelected">
+          on-doc-variable-discount-selected="_docVariableDiscountSelected"
+          on-doc-fix-discount-selected="_docFixDiscountSelected"
+          on-line-variable-discount-selected-previous="_lineVariableDiscountSelectedPrevious"
+          on-line-variable-discount-selected="_lineVariableDiscountSelected"
+          on-line-fix-discount-selected="_lineFixDiscountSelected"
+          on-doc-del-discount-selected="_docDelDiscountSelected"
+          on-line-del-discount-selected="_lineDelDiscountSelected">
       </nc-discounts-grid>
     </div>
 
