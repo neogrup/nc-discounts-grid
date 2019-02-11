@@ -6,6 +6,15 @@
 <dom-module id="nc-discounts-grid">
   <template>
     <style>
+      :host {
+        --discounts-grid-item-content-border-radius: 5px;
+        --discounts-grid-item-content-box-shadow: none;
+      }
+
+      nc-items-grid{
+        --items-grid-item-content-border-radius: var(--discounts-grid-item-content-border-radius);
+        --items-grid-item-content-box-shadow: var(--discounts-grid-item-content-box-shadow);
+      }
     </style>
 
 
@@ -20,7 +29,6 @@
         item-height="[[heightDiscountsGridItems]]"
         item-width="[[widthDiscountsGridItems]]"
         item-margin="[[marginDiscountsGridItems]]"
-        item-view-mode="[[viewModeDiscountsGridItems]]"
         on-item-selected="_discountSelected">
     </nc-items-grid>
 
@@ -59,10 +67,6 @@
           },
           marginDiscountsGridItems: {
             type: Number,
-            reflectToAttribute: true
-          },
-          viewModeDiscountsGridItems: {
-            type: String,
             reflectToAttribute: true
           }
         };
