@@ -1,72 +1,105 @@
 {
   "apiVersion": "1",
-  "systemTime": "2019-01-18T12:45:01.5121407+01:00",
+  "systemTime": "2019-02-28T16:04:31.0903158+01:00",
   "data": [
     {
-      "backgroundColor": "#253855",
       "code": "DL25",
-      "kind": "line",
       "name": "25% dto.línea",
+      "kind": "line",
+      "minDocAmount": null,
       "percentage": 25,
-      "urlImage": "imgdisct/R002/../../../Users/Edgar/Pictures/dto.jpg"
+      "amount": null,
+      "variable": "",
+      "minValue": null,
+      "maxValue": null,
+      "backgroundColor": "#80CBC4"
     },
     {
-      "backgroundColor": "#253855",
       "code": "DL10",
-      "kind": "line",
-      "maxValue": 50,
-      "minDocAmount": 1.5,
-      "minValue": 0,
       "name": "10% dto.línea",
-      "percentage": 10,
-      "urlImage": "imgdisct/R002/Descuentos/L10.png"
-    },
-    {
-      "backgroundColor": "#253855",
-      "code": "DTVA",
       "kind": "line",
-      "maxValue": 100,
-      "minValue": 5,
+      "minDocAmount": 1.5,
+      "percentage": 10,
+      "amount": null,
+      "variable": "",
+      "minValue": 0,
+      "maxValue": 50,
+      "backgroundColor": "#80CBC4"
+    },
+    {
+      "code": "DTVA",
       "name": "Dto. de línea",
+      "kind": "line",
+      "minDocAmount": null,
       "percentage": 20,
-      "urlImage": "imgdisct/R002/Descuentos/LVA.png"
-    },
-    {
-      "backgroundColor": "#253855",
-      "code": "",
-      "kind": "lin.del",
-      "name": "Borrar dto linea"
-    },
-    {
-      "backgroundColor": "#FF9800",
-      "code": "DTVP",
-      "kind": "doc",
-      "maxValue": 100,
+      "amount": null,
+      "variable": "",
       "minValue": 5,
+      "maxValue": 100,
+      "backgroundColor": "#80CBC4"
+    },
+    {
+      "code": "DLDEL",
+      "name": "Borrar dto linea",
+      "kind": "lin.del",
+      "minDocAmount": null,
+      "percentage": null,
+      "amount": null,
+      "variable": "",
+      "minValue": null,
+      "maxValue": null,
+      "urlImage": "",
+      "backgroundColor": "#EF9A9A"
+    },
+    {
+      "code": "DTVP",
       "name": "Dto. de pie",
+      "kind": "doc",
+      "minDocAmount": null,
       "percentage": 20,
-      "urlImage": "imgdisct/R002/Descuentos/TVA.png"
+      "amount": null,
+      "variable": "",
+      "minValue": 5,
+      "maxValue": 100,
+      "backgroundColor": "#FFCC80"
     },
     {
-      "backgroundColor": "#FF9800",
       "code": "DP00",
-      "kind": "doc",
       "name": "100% dto.",
-      "percentage": 100
-    },
-    {
-      "backgroundColor": "#FF9800",
-      "code": "DP5",
       "kind": "doc",
-      "name": "5% dto.",
-      "percentage": 5,
-      "urlImage": "imgdisct/R002/Descuentos/T5.png"
+      "minDocAmount": null,
+      "percentage": 100,
+      "amount": null,
+      "variable": "",
+      "minValue": null,
+      "maxValue": null,
+      "urlImage": "",
+      "backgroundColor": "#FFCC80"
     },
     {
-      "backgroundColor": "#FF9800",
-      "code": "",
+      "code": "DP5",
+      "name": "5% dto.",
+      "kind": "doc",
+      "minDocAmount": null,
+      "percentage": 5,
+      "amount": null,
+      "variable": "",
+      "minValue": null,
+      "maxValue": null,
+      "backgroundColor": "#FFCC80"
+    },
+    {
+      "code": "DPDEL",
+      "name": "Borrar dto pie",
       "kind": "doc.del",
-      "name": "Borrar dto pie"
+      "minDocAmount": null,
+      "percentage": null,
+      "amount": null,
+      "variable": "",
+      "minValue": null,
+      "maxValue": null,
+      "urlImage": "",
+      "backgroundColor": "#EF9A9A"
     }
   ],
   "error": null

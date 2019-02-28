@@ -5,92 +5,124 @@ Copyright (c) 2017 Neo
 -->
 <html lang="es">
 <head>
-  <title>nc-discounts-grid demo</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <title>nc-discounts-grid demo</title>
 
-  <link rel="import" href="../../polymer/polymer-element.html">
-  <link rel="import" href="../../iron-ajax/iron-ajax.html">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
-  <link rel="import" href="../nc-discounts-grid.html">
-  <style>
-    body{
-      margin: 0px;
-      padding: 0px;
-      font-family: 'Roboto', 'Noto', sans-serif;
-    }
-  </style>
-</head>
-<body unresolved>
-<dom-module id="nc-discounts-grid-demo">
-  <template>
-    <style>
-     :host {
-        display: block;
-      }
-
-      div{
-        margin-bottom: 20px;
-      }
-
-      .discounts-container{
-        height: 300px;
-        width: 400px;
-        background-color: #EF9A9A;
-      }
-
-      
-
-
-    </style>
-
-    <iron-ajax id="getDiscountsList"
-        auto
-        url="data/discounts"
-        method="get"
-        handle-as="json"
-        last-response="{{discountsList}}">
-    </iron-ajax>
-
-    <div class="discounts-container">
-      <nc-discounts-grid
-          id="gridDiscounts"
-          ticket-total-amount="25.546"
-          line-total-amount="2.5"
-          discount-increase-percent="5"
-          discounts-grid-data="[[discountsList.data]]"
-          height-discounts-grid-items="70"
-          width-discounts-grid-items="70"
-          margin-discounts-grid-items="10"
-          language="es"
-          on-doc-variable-discount-selected="_docVariableDiscountSelected"
-          on-doc-fix-discount-selected="_docFixDiscountSelected"
-          on-line-variable-discount-selected-previous="_lineVariableDiscountSelectedPrevious"
-          on-line-variable-discount-selected="_lineVariableDiscountSelected"
-          on-line-fix-discount-selected="_lineFixDiscountSelected"
-          on-doc-del-discount-selected="_docDelDiscountSelected"
-          on-line-del-discount-selected="_lineDelDiscountSelected">
-      </nc-discounts-grid>
-    </div>
-
-
-  </template>
-  <script>
-    class NcDiscountsGridDemo extends Polymer.Element {
-      static get is() {
-        return 'nc-discounts-grid-demo';
-      }
-
-      _discountSelected(item){
-        console.log(item);
-      }
-    }
-    window.customElements.define(NcDiscountsGridDemo.is, NcDiscountsGridDemo);
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+    import '@polymer/iron-demo-helpers/demo-snippet';
   </script>
-</dom-module>
-<nc-discounts-grid-demo></nc-discounts-grid-demo>
+
+  <script type="module" src="../nc-discounts-grid.js"></script>
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </custom-style>
+</head>
+<body>
+  <div class="vertical-section-container centered">
+    <h3>nc-discounts-grid demo</h3>
+    <demo-snippet>
+      <template>
+        <demo-nc-discounts-grid></demo-nc-discounts-grid>
+      </template>
+    </demo-snippet>
+  </div>
+
+  <script type="module">
+    import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+    import '@polymer/iron-ajax/iron-ajax.js';
+
+    class DemoNcDiscountsGrid extends PolymerElement {
+      static get template() {
+        return html`
+          <style>
+            .container{
+              height: 220px;
+            }
+          </style>
+
+          <iron-ajax 
+              id="getDiscountsList"
+              auto
+              url="data/discounts"
+              method="get"
+              handle-as="json"
+              last-response="{{dataDiscountsList}}">
+          </iron-ajax>
+
+          <div class="container">
+            <nc-discounts-grid
+                id="gridDiscounts"
+                language="{{language}}"
+                discounts-grid-data="[[dataDiscountsList.data]]"
+                height-discounts-grid-items="[[dimensionGridButtons]]"
+                width-discounts-grid-items="[[dimensionGridButtons]]"
+                ticket-total-amount="20.5"
+                line-total-amount="5.5"
+                discount-increase-percent="10"
+                on-doc-variable-discount-selected="_docVariableDiscountSelected"
+                on-doc-fix-discount-selected="_docFixDiscountSelected"
+                on-line-variable-discount-selected-previous="_lineVariableDiscountSelectedPrevious"
+                on-line-variable-discount-selected="_lineVariableDiscountSelected"
+                on-line-fix-discount-selected="_lineFixDiscountSelected"
+                on-doc-del-discount-selected="_docDelDiscountSelected"
+                on-line-del-discount-selected="_lineDelDiscountSelected">
+            </nc-discounts-grid>
+          </div>
+        `;
+      }
+
+      static get properties() {
+        return {
+          language: {
+            type: String,
+            value: 'es'
+          },
+          dimensionGridButtons: {
+            type: Number,
+            value: 100
+          }
+        }
+      }
+
+      _docVariableDiscountSelected(discount){
+        console.log('_docVariableDiscountSelected', discount);
+      }
+
+      _docFixDiscountSelected(discount){
+        console.log('_docFixDiscountSelected', discount);
+      }
+
+      _lineVariableDiscountSelectedPrevious(discount){
+        console.log('_lineVariableDiscountSelectedPrevious', discount);
+      }
+
+      _lineVariableDiscountSelected(discount){
+        console.log('_lineVariableDiscountSelected', discount);
+      }
+
+      _lineFixDiscountSelected(discount){
+        console.log('_lineFixDiscountSelected', discount);
+      }
+
+      _docDelDiscountSelected(discount){
+        console.log('_docDelDiscountSelected', discount);
+      }
+
+      _lineDelDiscountSelected(discount){
+        console.log('_lineDelDiscountSelected', discount);
+      }
+    }
+    window.customElements.define('demo-nc-discounts-grid', DemoNcDiscountsGrid);
+  </script>
+
 </body>
 </html>
