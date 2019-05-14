@@ -74,7 +74,7 @@ class NcDiscountsGrid extends PolymerElement {
   }
 
   _discountSelected(discount){
-    if ((discount.detail.minValue) && (discount.detail.maxValue)){
+    if (discount.detail.variable === 'S'){
       if (discount.detail.kind === "doc"){
         this.openDiscountDialog(discount.detail);
       } else {
