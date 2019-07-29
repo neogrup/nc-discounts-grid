@@ -29,6 +29,7 @@ class NcDiscountsGrid extends PolymerElement {
           item-height="[[heightDiscountsGridItems]]"
           item-width="[[widthDiscountsGridItems]]"
           item-margin="[[marginDiscountsGridItems]]"
+          animations="[[animations]]"
           on-item-selected="_discountSelected">
       </nc-items-grid>
 
@@ -53,6 +54,10 @@ class NcDiscountsGrid extends PolymerElement {
       breadcrumb: {
         type: Boolean,
         value: false
+      },
+      animations: {
+        type: Boolean,
+        value: true
       },
       heightDiscountsGridItems: {
         type: Number,
