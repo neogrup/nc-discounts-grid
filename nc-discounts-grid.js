@@ -36,6 +36,7 @@ class NcDiscountsGrid extends PolymerElement {
       <nc-discount-dialog 
           id="discountDialog" 
           language="{{language}}" 
+          show-keyboard="{{showKeyboard}}"
           on-discount-accepted="_discountAccepted">
       </nc-discount-dialog>
     `;
@@ -70,6 +71,9 @@ class NcDiscountsGrid extends PolymerElement {
       marginDiscountsGridItems: {
         type: Number,
         reflectToAttribute: true
+      },
+      showKeyboard: {
+        type: String,
       }
     };
   }
