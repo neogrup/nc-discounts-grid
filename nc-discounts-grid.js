@@ -35,6 +35,7 @@ class NcDiscountsGrid extends PolymerElement {
 
       <nc-discount-dialog 
           id="discountDialog" 
+          symbol="{{symbol}}"
           language="{{language}}" 
           show-keyboard="{{showKeyboard}}"
           on-discount-accepted="_discountAccepted">
@@ -52,6 +53,7 @@ class NcDiscountsGrid extends PolymerElement {
         value: []
       },
       language: String,
+      symbol: String,
       breadcrumb: {
         type: Boolean,
         value: false
