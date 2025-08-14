@@ -10,7 +10,7 @@
     "url": "https://github.com/NEOGRUP/nc-discounts-grid"
   },
   "name": "@neogrup/nc-discounts-grid",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
@@ -22,6 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@neogrup/nc-discount-dialog": "^2.0.7",
+    "@neogrup/nc-discounts-grid": "file:",
     "@neogrup/nc-items-grid": "^2.0.13",
     "@polymer/polymer": "^3.3.0"
   },

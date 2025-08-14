@@ -105,6 +105,9 @@ class NcDiscountsGrid extends PolymerElement {
         case 'lin.del':
           this.dispatchEvent(new CustomEvent('line-del-discount-selected', {detail: {discountData: discount.detail}, bubbles: true, composed: true }));  
           break;
+        case 'voucher':
+          this.dispatchEvent(new CustomEvent('line-voucher-discount-selected', {detail: {discountData: discount.detail}, bubbles: true, composed: true }));  
+          break;
       }
     }
   }
